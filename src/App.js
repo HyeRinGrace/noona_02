@@ -16,7 +16,7 @@ function App() {
 
   const getURL = async (lat, lon) => {
     try {
-      let URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=kr&appid=${API}&units=${units}`; // HTTPS로 변경
+      let URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=kr&appid=${API}&units=${units}`;
       setLoading(true);
       let response = await fetch(URL);
       let dataWeather = await response.json();
@@ -38,6 +38,10 @@ function App() {
       }
     });
   };
+
+  useEffect(() => {
+    getCurrentLocation(); // 페이지 로드 시 사용자의 위치를 받아옴
+  }, []); // 빈 배열을 넘겨주어 한 번만 실행되도록 함
 
   const getWeatherByCity = async () => {
     try {
