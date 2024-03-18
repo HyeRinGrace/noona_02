@@ -1,4 +1,3 @@
-/*Eslint disabled*/
 
 import './App.css';
 import React,{useEffect,useState} from 'react';
@@ -24,43 +23,54 @@ function App() {
     let URL = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=kr&appid=${API}&units=${units}`;
     setLoading(true);
     let response = await fetch(URL);
-    let data = await response.json();
-    let currentLocation = data;
-
+    let dataWeather = await response.json();
+    let currentLocation = dataWeather;
+  
     setData(currentLocation);
     setLoading(false);
   }
+  console.log(data);
 
   // 현재 위치를 찾아주는 함수
-  const getCurrentLocation =() => {
-    navigator.geolocation.getCurrentPosition((position)=>{
-      let lat = position.coords.latitude;
-      let lon = position.coords.longitude;
-
-      getURL(lat,lon);
-
+  const getCurrentLocation = () => {
+    navigator.geolocation?.getCurrentPosition((position) => {
+      if (position?.coords.latitude && position?.coords.longitude) {
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
+        getURL(lat, lon);
+      } else {
+        console.error("Cannot get current location coordinates.");
+      }
     });
-  }
+  };
 
   const getWeatherByCity = async() =>{
-    let URL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API}&units=${units}`;
-    setLoading(true);
-    let response = await fetch(URL);
-    let data = await response.json();
-    setData(data);
-    setLoading(false);
+    try {
+      let URL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API}&units=${units}`; //&units=${units}
+      setLoading(true);
+      let response = await fetch(URL);
+      let data = await response.json();
+      setData(data);
+      setLoading(false);
+      
+    } catch (error) {
+      console.error(error.message);
+      
+    }
+
 
   }
+
 
 
   // 페이지가 렌더링 될때마다 불러줄 함수 선언(useEffect 함수 사용)
-  useEffect(()=>{
-    if(city == 'Current'){
+  useEffect(() => {
+    if (city === 'Current') {
       getCurrentLocation();
-    }else{
+    } else {
       getWeatherByCity();
     }
-  },[city])
+  }, [city]);
 
 
   return (
