@@ -1,4 +1,5 @@
 import React from 'react';
+import '../components/box.css';
 
 const Box = ({ data }) => {
 
@@ -13,7 +14,7 @@ const Box = ({ data }) => {
               <>
                 <div className='cloud'> {data?.weather[0].description}</div>
                 {icon && (
-                  <img src={icon} style={{
+                  <img className="weatherIcon"src={icon} style={{
                     width:'80px',
                     backgroundColor:'#C9AEF2',
                     borderRadius:'50px',

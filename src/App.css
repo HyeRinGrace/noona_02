@@ -88,9 +88,6 @@ body{
     width: calc(100% / 3 - 10px); 
     margin-bottom: 10px;
   }
-  .weather-icon {
-    width: 30px; 
-  }
 
  
 

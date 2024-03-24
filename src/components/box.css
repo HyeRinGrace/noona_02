@@ -1,0 +1,5 @@
+@media (max-width: 768px) {
+    .weatherIcon {
+      width: 30px;
+    }
+  }
