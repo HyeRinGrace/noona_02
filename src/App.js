@@ -91,7 +91,7 @@ function App() {
     <div className="App">
       {loading ? (
         <div className='Container'>
-          <ClipLoader color="f88c6b" loading={loading} size={150} />
+          <ClipLoader color="white" loading={loading} size={150} />
         </div>
       ) : (
         <div className='Container'>

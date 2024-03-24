@@ -15,7 +15,7 @@ const Box = ({ data }) => {
                 {icon && (
                   <img src={icon} style={{
                     width:'80px',
-                    backgroundColor:'gray',
+                    backgroundColor:'#C9AEF2',
                     borderRadius:'50px',
                   }}/>
                 )}
