@@ -2,7 +2,7 @@ import React from 'react';
 
 const Box = ({ data }) => {
 
-  const icon = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+  const icon = data && data.weather && data.weather.length > 0 ? `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png` : null;
   
   return (
     <div className='weather-box'>
@@ -11,12 +11,14 @@ const Box = ({ data }) => {
           <div className='title'>{data?.name}
             {data && data.weather && data.weather.length > 0 && (
               <>
-              <div className='cloud'> {data.weather[0].description}</div>
-              <img src={icon} style={{
-                width:'80px',
-                backgroundColor:'gray',
-                borderRadius:'50px',
-              }}/>
+                <div className='cloud'> {data?.weather[0].description}</div>
+                {icon && (
+                  <img src={icon} style={{
+                    width:'80px',
+                    backgroundColor:'gray',
+                    borderRadius:'50px',
+                  }}/>
+                )}
               </>
             )}
           </div>
