@@ -9,7 +9,6 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   flex-direction: column;
 }
 
@@ -18,7 +17,7 @@ body{
   padding: 100px;
   border-radius: 40px;
   background-color: white;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .title{
@@ -56,5 +55,47 @@ body{
 
 .cloud{
   font-size: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width:720px) {
+  .Container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+    flex-direction: column;
+  }
+  .weather-box{
+    border: 3px solid white;
+    padding: 30px;
+    border-radius: 40px;
+    background-color: white;
+    opacity: 0.8;
+  }
+  .title{
+    font-size: 25px;
+    padding: 10px;
+    font-weight: 900;
+  }
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 350px;
+  }
+  .buttons .btn {
+    width: calc(100% / 3 - 10px); 
+    margin-bottom: 10px;
+  }
+
+ 
+
+}
+h3{
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  font-weight: 900;
 }
